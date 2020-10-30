@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // get the R channel
         {
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
             for (int x = 0; x < openImg.Width; x++)
@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = image1;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //get the G channel
         {
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
             for (int x = 0; x < openImg.Width; x++)
@@ -82,7 +82,7 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = image1;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //get the B channel
         {
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
             for (int x = 0; x < openImg.Width; x++)
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = image1;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)// get the grayscale
         {
             // use the average method from RGB to grayscale
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
@@ -120,6 +120,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             // implement mean filter
+            Bitmap change_image1 = (Bitmap)openImg.Clone(); //image afer filter
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
             for (int x = 1; x < openImg.Width-1; x++)
             {
@@ -135,16 +136,17 @@ namespace WindowsFormsApplication1
                             mf += pixelColor.G;
                         }
                     }
-                    image1.SetPixel(x, y, Color.FromArgb(mf/9, mf/9, mf/9));
+                    change_image1.SetPixel(x, y, Color.FromArgb(mf/9, mf/9, mf/9));
                 }
             }
-            pictureBox1.Image = image1;
+            pictureBox1.Image = change_image1;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             // implement median filter
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
+            Bitmap change_image1 = (Bitmap)openImg.Clone(); //image afer filter
             for (int x = 1; x < openImg.Width - 1; x++)
             {
                 for (int y = 1; y < openImg.Height - 1; y++)
@@ -160,10 +162,10 @@ namespace WindowsFormsApplication1
                         }
                     }
                     Array.Sort(median_f);
-                    image1.SetPixel(x, y, Color.FromArgb(median_f[4], median_f[4], median_f[4]));
+                    change_image1.SetPixel(x, y, Color.FromArgb(median_f[4], median_f[4], median_f[4]));
                 }
             }
-            pictureBox1.Image = image1;
+            pictureBox1.Image = change_image1;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -303,6 +305,8 @@ namespace WindowsFormsApplication1
                     { -1,0,1 }
             };
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
+            Bitmap change_image1 = (Bitmap)openImg.Clone(); //image afer filter
+
             for (int x = 1; x < openImg.Width-1; x++)
             {
                 for (int y = 1; y < openImg.Height-1; y++)
@@ -318,10 +322,10 @@ namespace WindowsFormsApplication1
                     }
                     sob_v = sob_v > 255 ? 255 : sob_v;
                     sob_v = sob_v < 0 ? 0 : sob_v;
-                    image1.SetPixel(x, y, Color.FromArgb(sob_v, sob_v, sob_v));
+                    change_image1.SetPixel(x, y, Color.FromArgb(sob_v, sob_v, sob_v));
                 }
             }
-            pictureBox1.Image = image1;
+            pictureBox1.Image = change_image1;
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -332,6 +336,7 @@ namespace WindowsFormsApplication1
                     { 1,2,1   }
             };
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
+            Bitmap change_image1 = (Bitmap)openImg.Clone(); //image afer filter
             for (int x = 1; x < openImg.Width - 1; x++)
             {
                 for (int y = 1; y < openImg.Height - 1; y++)
@@ -347,10 +352,10 @@ namespace WindowsFormsApplication1
                     }
                     sob_h = sob_h > 255 ? 255 : sob_h;
                     sob_h = sob_h < 0 ? 0 : sob_h;
-                    image1.SetPixel(x, y, Color.FromArgb(sob_h, sob_h, sob_h));
+                    change_image1.SetPixel(x, y, Color.FromArgb(sob_h, sob_h, sob_h));
                 }
             }
-            pictureBox1.Image = image1;
+            pictureBox1.Image = change_image1;
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -366,6 +371,7 @@ namespace WindowsFormsApplication1
                     { -1,0,1 }
             };
             Bitmap image1 = (Bitmap)openImg.Clone(); //make a copy
+            Bitmap change_image1 = (Bitmap)openImg.Clone(); //image afer filter
             for (int x = 1; x < openImg.Width - 1; x++)
             {
                 for (int y = 1; y < openImg.Height - 1; y++)
@@ -384,10 +390,10 @@ namespace WindowsFormsApplication1
                     int value = (int)Math.Pow((sob_h * sob_h + sob_v * sob_v), 0.5);
                     value = value > 255 ? 255 : value;
                     value = value < 0 ? 0 : value;
-                    image1.SetPixel(x, y, Color.FromArgb(value, value, value));
+                    change_image1.SetPixel(x, y, Color.FromArgb(value, value, value));
                 }
             }
-            pictureBox1.Image = image1;
+            pictureBox1.Image = change_image1;
         }
 
     }
