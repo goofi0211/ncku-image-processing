@@ -396,5 +396,36 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = change_image1;
         }
 
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //implement threshold function
+            int threshold = Int32.Parse(textBox2.Text);
+            Bitmap image1 = (Bitmap)openImg.Clone(); //original picture
+            Bitmap image2 = (Bitmap)pictureBox1.Image;// threshold picture
+            for (int x = 0; x < openImg.Width; x++)
+            {
+                for (int y = 0; y < openImg.Height; y++)
+                {
+                    Color pixelColor = image2.GetPixel(x, y);
+                    int g = pixelColor.G > threshold ? 255 : 0;
+                    Color newValue = Color.FromArgb(0, g, 0);
+                    image2.SetPixel(x, y, newValue);
+                }
+            }
+            // 初始化畫布(最終的拼圖畫布)並設定寬高
+            int width = image2.Width;
+            int height = image2.Height;
+            Bitmap bitMap = new Bitmap(image2.Width, image2.Height);
+            Graphics g1 = Graphics.FromImage(bitMap);
+            // 將畫布塗為白色(底部顏色可自行設定)
+            g1.FillRectangle(Brushes.White, new Rectangle(0, 0, width, height));
+            //在x=0，y=0處畫上圖一
+            g1.DrawImage(image1, 0, 0, image1.Width, image1.Height);
+            //在x=0，y=0處畫上圖二
+            g1.DrawImage(image2, 0, 0, image1.Width, image1.Height);
+            image1.Dispose();
+            image2.Dispose();
+            pictureBox1.Image = bitMap;
+        }
     }
 }
