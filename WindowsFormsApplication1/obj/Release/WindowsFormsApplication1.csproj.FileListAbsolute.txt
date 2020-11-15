@@ -1,0 +1,9 @@
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Form1.resources
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+D:\img processing\ncku-image-processing\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
